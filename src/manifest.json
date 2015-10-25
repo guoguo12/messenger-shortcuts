@@ -1,0 +1,17 @@
+{
+  "name": "Keyboard Shortcuts for Messenger",
+  "version": "1.0.0",
+  "description": "Gmail-like keyboard shortcuts for the Messenger web app (messenger.com).",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["*://www.messenger.com/*"],
+      "js": ["messenger-shortcuts.js"]
+    }
+  ],
+  "permissions": [
+    "*://www.messenger.com/*"
+  ],
+  "icons": { "48": "icon48.png",
+             "128": "icon128.png" }
+}
