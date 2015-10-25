@@ -2,7 +2,8 @@
 
 This Chrome extension adds keyboard shortcuts to the [Messenger web app](http://messenger.com).
 
-<!-- Download and install from the [Chrome Web Store](https://chrome.google.com/webstore/). -->
+To install, head over to the [Chrome Web Store](https://chrome.google.com/webstore/detail/keyboard-shortcuts-for-me/elgfaolomlhhmppjdicpgpmglkllebfb?hl=en-US&gl=US).
+Alternatively, you can clone this repo and load the `src/` directory as an [unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked).
 
 ## List of shortcuts
 
