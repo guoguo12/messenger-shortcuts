@@ -6,15 +6,23 @@ To install, head over to the [Chrome Web Store](https://chrome.google.com/websto
 Alternatively, you can clone this repo and load the `src/` directory as an [unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked).
 
 ## List of shortcuts
-
-* Esc &ndash; Move cursor to message input field
+### General
+* Esc &ndash; Move cursor to message input field / cancel search
 * Alt+Shift+C &ndash; Compose new message
 * Alt+Shift+Q &ndash; Search for people and groups
+
+### Jumping
 * Alt+Shift+<i>n</i> &ndash; Jump to conversation <i>n</i>-th from top
 * Alt+Up/Down &ndash; Jump to conversation one above/below
+
+### Conversation
 * Alt+Shift+D &ndash; Toggle conversation details
 * Alt+Shift+M &ndash; Mute conversation
+
+### Help
 * Alt+Shift+/ &ndash; Display help dialog
+
+*This one works even without the extension.
 
 ## License
 
