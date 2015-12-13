@@ -11,6 +11,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 * Alt+Shift+C &ndash; Compose new message
 * Alt+Shift+Q &ndash; Search for people and groups
 * Alt+Shift+<i>n</i> &ndash; Jump to conversation <i>n</i>-th from top
+* Alt+Up/Down &ndash; Jump to conversation one above/below
 * Alt+Shift+D &ndash; Toggle conversation details
 * Alt+Shift+M &ndash; Mute conversation
 * Alt+Shift+/ &ndash; Display help dialog

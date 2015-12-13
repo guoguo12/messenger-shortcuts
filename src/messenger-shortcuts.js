@@ -11,7 +11,8 @@ HELP_HTML = "List of shortcuts:\
 <b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Shift+C</b> &ndash; Compose new message<br>\
 <b>Alt+Shift+Q</b> &ndash; Search for people and groups<br>\
-<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br><br>\
+<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
+<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
 <b>Alt+Shift+D</b> &ndash; Toggle conversation details<br>\
 <b>Alt+Shift+M</b> &ndash; Mute conversation<br><br>\
 <b>Alt+Shift+/</b> &ndash; Display this help dialog<br>\
