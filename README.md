@@ -13,7 +13,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 
 ### Jumping
 * Alt+Shift+<i>n</i> &ndash; Jump to conversation <i>n</i>-th from top
-* Alt+Up/Down &ndash; Jump to conversation one above/below
+* Alt+Up/Down &ndash; Jump to conversation one above/below*
 
 ### Conversation
 * Alt+Shift+D &ndash; Toggle conversation details
