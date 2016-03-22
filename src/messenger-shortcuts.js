@@ -27,6 +27,13 @@ document.body.onkeydown = function(event) {
     focusMessageInput();
   }
 
+  if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
+    // we're going to change the input, so throw away this keypress
+    event.preventDefault();
+    selectFirstSearchResult();
+    return;
+  }
+
   // Only combinations of the form Alt+Shift+<key> are accepted
   if (!(event.altKey && event.shiftKey)) {
     return;
@@ -78,6 +85,15 @@ function jumpToMessage(index) {
   document.querySelectorAll('div[aria-label="Conversations"] a')[index].click();
 }
 
+function selectFirstSearchResult() {
+  var first = document.querySelector('span[role="search"] a');
+  if (first) {
+    first.click();
+    // focus message input afterwards in case the user already has that chat open
+    focusMessageInput();
+  }
+}
+
 function compose() {
   getByAttr('a', 'title', 'New Message').click();
 }
@@ -90,12 +106,16 @@ function mute() {
   getByAttr('input', 'type', 'checkbox').click();
 }
 
+function getSearchBar() {
+  return getByAttr('input', 'placeholder', 'Search for people and groups');
+}
+
 function focusSearchBar() {
-  getByAttr('input', 'placeholder', 'Search for people and groups').focus();
+  getSearchBar().focus();
 }
 
 function focusMessageInput() {
-  getByAttr('div', 'title', 'Type a message...').click();
+  document.querySelector('div[role="main"] div[role="textbox"]').click();
 }
 
 function openDeleteDialog() {
