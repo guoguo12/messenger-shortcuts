@@ -54,10 +54,10 @@ document.body.onkeydown = function(event) {
       break;
     case 77:  // M
       mute();
-      break;    
+      break;
     case 81:  // Q
       focusSearchBar();
-      break;    
+      break;
     case 191: // Fwd. slash
       openHelp();
       break;
@@ -86,7 +86,7 @@ function jumpToMessage(index) {
 }
 
 function selectFirstSearchResult() {
-  var first = document.querySelector('span[role="search"] a');
+  var first = document.querySelector('span[role="option"] a');
   if (first) {
     first.click();
     // focus message input afterwards in case the user already has that chat open
