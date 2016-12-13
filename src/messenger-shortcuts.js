@@ -54,10 +54,10 @@ document.body.onkeydown = function(event) {
       break;
     case 77:  // M
       mute();
-      break;    
+      break;
     case 81:  // Q
       focusSearchBar();
-      break;    
+      break;
     case 191: // Fwd. slash
       openHelp();
       break;
@@ -95,7 +95,7 @@ function selectFirstSearchResult() {
 }
 
 function compose() {
-  getByAttr('a', 'title', 'New Message').click();
+  getByAttr('a', 'aria-label', 'New Message').click();
 }
 
 function toggleInfo() {
@@ -107,7 +107,7 @@ function mute() {
 }
 
 function getSearchBar() {
-  return getByAttr('input', 'placeholder', 'Search for people and groups');
+  return getByAttr('input', 'type', 'text');
 }
 
 function focusSearchBar() {
