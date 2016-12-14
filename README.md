@@ -9,7 +9,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 ### General
 * Esc &ndash; Move cursor to message input field / cancel search
 * Alt+Shift+C &ndash; Compose new message
-* Alt+Shift+Q &ndash; Search for people and groups
+* Alt+Shift+Q &ndash; Search Messenger
 
 ### Jumping
 * Alt+Shift+<i>n</i> &ndash; Jump to conversation <i>n</i>-th from top
