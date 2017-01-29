@@ -5,6 +5,8 @@ This Chrome extension adds keyboard shortcuts to the [Messenger web app](http://
 To install, head over to the [Chrome Web Store](https://chrome.google.com/webstore/detail/keyboard-shortcuts-for-me/elgfaolomlhhmppjdicpgpmglkllebfb?hl=en-US&gl=US).
 Alternatively, you can clone this repo and load the `src/` directory as an [unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked).
 
+We now have an official fork for Firefox! Check it out [here](https://github.com/sarangjo/messenger-shortcuts).
+
 ## List of shortcuts
 ### General
 * Esc &ndash; Move cursor to message input field / cancel search
