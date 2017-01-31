@@ -5,7 +5,7 @@ This Firefox add-on adds keyboard shortcuts to the [Messenger web app](http://me
 To install, head over to the [Firefox Extension Store](https://addons.mozilla.org/en-US/firefox/addon/keyboardshortcutsformessenger/).
 Alternatively, you can clone this repo and load the `src/` directory as a [temporary add-on](https://developer.mozilla.org/en-US/docs/Tools/about%3Adebugging#Enabling_add-on_debugging).
 
-We now have an official fork for Firefox! Check it out [here](https://github.com/sarangjo/messenger-shortcuts).
+This add-on was originally designed and developed to be a Chrome extension, and the original source code can be found [here](https://github.com/guoguo12/messenger-shortcuts).
 
 ## List of shortcuts
 ### General
