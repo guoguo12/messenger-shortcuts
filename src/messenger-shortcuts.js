@@ -33,9 +33,7 @@ document.body.onkeydown = function(event) {
   // Esc key
   if (event.keyCode == 27) {
     focusMessageInput();
-    if(menuOpened) {
-      menuOpened = false;
-    }
+    dismiss();
   }
 
   if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
@@ -82,7 +80,7 @@ document.body.onkeydown = function(event) {
       break;
   }
 }
-
+document.body.addEventListener('click', dismiss, true);
 
 /** Helper functions **/
 
@@ -96,6 +94,12 @@ function last(arr) {
 
 function getCode(index) {
   return bind[index].charCodeAt(0);
+}
+
+function dismiss() {
+	if(menuOpened) {
+		menuOpened = false;
+	}
 }
 
 
