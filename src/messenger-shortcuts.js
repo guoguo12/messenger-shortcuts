@@ -8,13 +8,14 @@
 
 HELP_HTML = "List of shortcuts:\
 <br><br>\
-<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
+<b>Esc/Tilde</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Shift+C</b> &ndash; Compose new message<br>\
 <b>Alt+Shift+Q</b> &ndash; Search Messenger<br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
 <b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
 <b>Alt+Shift+D</b> &ndash; Toggle conversation details<br>\
-<b>Alt+Shift+M</b> &ndash; Mute conversation<br><br>\
+<b>Alt+Shift+M</b> &ndash; Mute conversation<br>\
+<b>Alt+Shift+E</b> &ndash; Send a like<br><br>\
 <b>Alt+Shift+/</b> &ndash; Display this help dialog<br>\
 "
 
@@ -22,8 +23,8 @@ HELP_HTML = "List of shortcuts:\
 /** Primary event handler **/
 
 document.body.onkeydown = function(event) {
-  // Escape key
-  if (event.keyCode === 27) {
+  // Esc key or ` (Tilde) Key
+  if (event.keyCode === 192 || event.keyCode == 27) {
     focusMessageInput();
   }
 
@@ -61,10 +62,10 @@ document.body.onkeydown = function(event) {
     case 191: // Fwd. slash
       openHelp();
       break;
-    // default:
-    //   focusMessageInput();
+    case 69: // E
+      sendLike();
+      break;
   }
-
 }
 
 
@@ -115,7 +116,11 @@ function focusSearchBar() {
 }
 
 function focusMessageInput() {
-  document.querySelector('div[role="main"] div[role="textbox"]').click();
+  targetNode = getByAttr('div', 'aria-label', 'Type a message...')
+  triggerMouseEvent (targetNode, "mouseover");
+  triggerMouseEvent (targetNode, "mousedown");
+  triggerMouseEvent (targetNode, "mouseup");
+  triggerMouseEvent (targetNode, "click");
 }
 
 function openDeleteDialog() {
@@ -130,4 +135,18 @@ function openHelp() {
     document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
     document.querySelector('div[role="dialog"] h2~div~div').remove();
   }, 100);
+}
+
+function sendLike() {
+  targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+  triggerMouseEvent(targetNode, "mouseover");
+  triggerMouseEvent(targetNode, "mousedown");
+  triggerMouseEvent(targetNode, "mouseup");
+  triggerMouseEvent(targetNode, "click");
+}
+
+function triggerMouseEvent (node, eventType) {
+    var clickEvent = document.createEvent ('MouseEvents');
+    clickEvent.initEvent (eventType, true, true);
+    node.dispatchEvent (clickEvent);
 }
