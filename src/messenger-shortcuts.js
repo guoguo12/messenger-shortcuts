@@ -12,7 +12,7 @@ var bind = ['C', 'D', 'M', 'Q', 'E'];
 
 HELP_HTML = "List of shortcuts:\
 <br><br>\
-<b>Esc/Tilde</b> &ndash; Move cursor to message input field<br><br>\
+<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Shift+"+bind[0]+"</b> &ndash; Compose new message<br>\
 <b>Alt+Shift+"+bind[3]+"</b> &ndash; Search Messenger<br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
@@ -30,8 +30,8 @@ var delay = 100;
 /** Primary event handler **/
 
 document.body.onkeydown = function(event) {
-  // Esc key or ` (Tilde) Key
-  if (event.keyCode === 192 || event.keyCode == 27) {
+  // Esc key
+  if (event.keyCode == 27) {
     focusMessageInput();
     if(menuOpened) {
       menuOpened = false;
