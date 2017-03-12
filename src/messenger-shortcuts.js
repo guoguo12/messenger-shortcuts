@@ -4,21 +4,28 @@
  * Author: Allen Guo <guoguo12@gmail.com>
  *****************************************/
 
+/** Key bindings **/
+/** Compose, ToggleInfo, Mute, Search, SendLike **/
+var bind = ['C', 'D', 'M', 'Q', 'E'];
+
 /** Constants **/
 
 HELP_HTML = "List of shortcuts:\
 <br><br>\
 <b>Esc/Tilde</b> &ndash; Move cursor to message input field<br><br>\
-<b>Alt+Shift+C</b> &ndash; Compose new message<br>\
-<b>Alt+Shift+Q</b> &ndash; Search Messenger<br>\
+<b>Alt+Shift+"+bind[0]+"</b> &ndash; Compose new message<br>\
+<b>Alt+Shift+"+bind[3]+"</b> &ndash; Search Messenger<br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
 <b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
-<b>Alt+Shift+D</b> &ndash; Toggle conversation details<br>\
-<b>Alt+Shift+M</b> &ndash; Mute conversation<br>\
-<b>Alt+Shift+E</b> &ndash; Send a like<br><br>\
+<b>Alt+Shift+"+bind[1]+"</b> &ndash; Toggle conversation details<br>\
+<b>Alt+Shift+"+bind[2]+"</b> &ndash; Mute conversation<br>\
+<b>Alt+Shift+"+bind[4]+"</b> &ndash; Send a like<br><br>\
 <b>Alt+Shift+/</b> &ndash; Display this help dialog<br>\
 "
 
+/** Menu **/
+var menuOpened = false;
+var delay = 100;
 
 /** Primary event handler **/
 
@@ -26,6 +33,9 @@ document.body.onkeydown = function(event) {
   // Esc key or ` (Tilde) Key
   if (event.keyCode === 192 || event.keyCode == 27) {
     focusMessageInput();
+    if(menuOpened) {
+      menuOpened = false;
+    }
   }
 
   if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
@@ -47,23 +57,28 @@ document.body.onkeydown = function(event) {
 
   // Other keys
   switch (event.keyCode) {
-    case 67:  // C
+    case getCode(0):
       compose();
       break;
-    case 68:  // D
+    case getCode(1):
       toggleInfo();
       break;
-    case 77:  // M
+    case getCode(2):
       mute();
       break;
-    case 81:  // Q
+    case getCode(3):
       focusSearchBar();
       break;
-    case 191: // Fwd. slash
-      openHelp();
-      break;
-    case 69: // E
+    case getCode(4):
       sendLike();
+      break;
+    case 191: // Fwd. slash
+      if(menuOpened) {
+        return;
+      } else {
+        openHelp();
+      } 
+      menuOpened = !menuOpened;
       break;
   }
 }
@@ -77,6 +92,10 @@ function getByAttr(tag, attr, value) {
 
 function last(arr) {
   return arr.length === 0 ? undefined : arr[arr.length - 1];
+}
+
+function getCode(index) {
+  return bind[index].charCodeAt(0);
 }
 
 
@@ -132,11 +151,11 @@ function openHelp() {
   mute();
   setTimeout(function() {
     document.querySelector('div[role="dialog"] h2').innerHTML = "Keyboard Shortcuts for Messenger";
-    document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
-    document.querySelector('div[role="dialog"] h2~div~div').remove();
-  }, 100);
+      document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
+      document.querySelector('div[role="dialog"] h2~div~div').remove();
+    }, delay);    
+  delay = 0; // to prevent unnecessary timeout
 }
-
 function sendLike() {
   targetNode = getByAttr('a', 'aria-label', 'Send a Like');
   triggerMouseEvent(targetNode, "mouseover");
