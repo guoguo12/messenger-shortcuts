@@ -25,14 +25,16 @@ HELP_HTML = "List of shortcuts:\
 
 /** Menu **/
 var menuOpened = false;
-var delay = 100;
+
+/** Prevent holding down the like button **/
+var likeDown = false;
 
 /** Primary event handler **/
 
 document.body.onkeydown = function(event) {
   // Esc key
   if (event.keyCode === 27) {
-		dismiss();
+    dismiss();
     focusMessageInput();
   }
 
@@ -68,10 +70,14 @@ document.body.onkeydown = function(event) {
       focusSearchBar();
       break;
     case getCode(4):
+      if (likeDown) {
+        return;
+      }
+      likeDown = true;
       sendLike();
       break;
     case 191: // Fwd. slash
-      if(menuOpened) {
+      if (menuOpened) {
         return;
       } else {
         openHelp();
@@ -80,7 +86,14 @@ document.body.onkeydown = function(event) {
       break;
   }
 }
-document.body.addEventListener('click', dismiss, true);
+
+// For like button spamming
+document.body.addEventListener('keyup', function () {
+    likeDown = false;
+}, false);
+
+// Toggle dismiss state of help dialog on click to close
+document.body.addEventListener('click', dismiss, true); 
 
 /** Helper functions **/
 
@@ -97,9 +110,9 @@ function getCode(index) {
 }
 
 function dismiss() {
-	if(menuOpened) {
-		menuOpened = false;
-	}
+  if (menuOpened) {
+    menuOpened = false;
+  }
 }
 
 /** Functionality **/
@@ -152,12 +165,9 @@ function openDeleteDialog() {
 
 function openHelp() {
   mute();
-  setTimeout(function() {
-    document.querySelector('div[role="dialog"] h2').innerHTML = "Keyboard Shortcuts for Messenger";
-    document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
-    document.querySelector('div[role="dialog"] h2~div~div').remove();
-  }, delay);
-	delay = 0; // to prevent unnecessary timeout
+  document.querySelector('div[role="dialog"] h2').innerHTML = "Keyboard Shortcuts for Messenger";
+  document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
+  document.querySelector('div[role="dialog"] h2~div~div').remove();
 }
 
 function sendLike() {
@@ -168,8 +178,8 @@ function sendLike() {
   triggerMouseEvent(targetNode, "click");
 }
 
-function triggerMouseEvent (node, eventType) {
-    var clickEvent = document.createEvent ('MouseEvents');
-    clickEvent.initEvent (eventType, true, true);
-    node.dispatchEvent (clickEvent);
+function triggerMouseEvent(node, eventType) {
+  var clickEvent = document.createEvent ('MouseEvents');
+  clickEvent.initEvent (eventType, true, true);
+  node.dispatchEvent (clickEvent);
 }
