@@ -31,9 +31,9 @@ var delay = 100;
 
 document.body.onkeydown = function(event) {
   // Esc key
-  if (event.keyCode == 27) {
+  if (event.keyCode === 27) {
+		dismiss();
     focusMessageInput();
-    dismiss();
   }
 
   if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
@@ -102,7 +102,6 @@ function dismiss() {
 	}
 }
 
-
 /** Functionality **/
 
 function jumpToMessage(index) {
@@ -155,11 +154,12 @@ function openHelp() {
   mute();
   setTimeout(function() {
     document.querySelector('div[role="dialog"] h2').innerHTML = "Keyboard Shortcuts for Messenger";
-      document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
-      document.querySelector('div[role="dialog"] h2~div~div').remove();
-    }, delay);    
-  delay = 0; // to prevent unnecessary timeout
+    document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
+    document.querySelector('div[role="dialog"] h2~div~div').remove();
+  }, delay);
+	delay = 0; // to prevent unnecessary timeout
 }
+
 function sendLike() {
   targetNode = getByAttr('a', 'aria-label', 'Send a Like');
   triggerMouseEvent(targetNode, "mouseover");
