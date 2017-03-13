@@ -89,7 +89,7 @@ document.body.onkeydown = function(event) {
 
 // For like button spamming
 document.body.addEventListener('keyup', function () {
-    likeDown = false;
+  likeDown = false;
 }, false);
 
 // Toggle dismiss state of help dialog on click to close
@@ -152,10 +152,10 @@ function focusSearchBar() {
 
 function focusMessageInput() {
   targetNode = getByAttr('div', 'aria-label', 'Type a message...')
-  triggerMouseEvent (targetNode, "mouseover");
-  triggerMouseEvent (targetNode, "mousedown");
-  triggerMouseEvent (targetNode, "mouseup");
-  triggerMouseEvent (targetNode, "click");
+  triggerMouseEvent(targetNode, "mouseover");
+  triggerMouseEvent(targetNode, "mousedown");
+  triggerMouseEvent(targetNode, "mouseup");
+  triggerMouseEvent(targetNode, "click");
 }
 
 function openDeleteDialog() {
@@ -179,7 +179,7 @@ function sendLike() {
 }
 
 function triggerMouseEvent(node, eventType) {
-  var clickEvent = document.createEvent ('MouseEvents');
-  clickEvent.initEvent (eventType, true, true);
-  node.dispatchEvent (clickEvent);
+  var clickEvent = document.createEvent('MouseEvents');
+  clickEvent.initEvent(eventType, true, true);
+  node.dispatchEvent(clickEvent);
 }
