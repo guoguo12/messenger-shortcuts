@@ -90,6 +90,7 @@ document.body.onkeydown = function(event) {
 // For like button spamming
 document.body.addEventListener('keyup', function () {
   likeDown = false;
+  triggerMouseEvent(targetNode, "mouseup");
 }, false);
 
 // Toggle dismiss state of help dialog on click to close
@@ -174,8 +175,6 @@ function sendLike() {
   targetNode = getByAttr('a', 'aria-label', 'Send a Like');
   triggerMouseEvent(targetNode, "mouseover");
   triggerMouseEvent(targetNode, "mousedown");
-  triggerMouseEvent(targetNode, "mouseup");
-  triggerMouseEvent(targetNode, "click");
 }
 
 function triggerMouseEvent(node, eventType) {
