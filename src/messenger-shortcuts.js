@@ -49,7 +49,7 @@ document.body.onkeydown = function(event) {
   // Do nothing if a dialog is open or if the like button is down
   if (document.querySelector('div[role="dialog"]') || likeDown) {
     return;
-  }  
+  }
 
   // Enter key (select first search result)
   if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
@@ -176,7 +176,8 @@ function openHelp() {
   // Open the settings dialog, which we're hijacking
   openSettings();
 
-  document.querySelector('div[role="dialog"] em').innerHTML = HELP_TITLE;
+  var titleDiv = document.querySelector('div[role="dialog"] em');
+  titleDiv.innerHTML = HELP_TITLE;
 
   var textDiv = document.querySelector('div[role="dialog"] h2~div');
   textDiv.innerHTML = HELP_TEXT;
