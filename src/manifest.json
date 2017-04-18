@@ -1,6 +1,6 @@
 {
   "name": "Keyboard Shortcuts for Messenger",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gmail-like keyboard shortcuts for the Messenger web app (messenger.com).",
   "manifest_version": 2,
   "content_scripts": [
@@ -13,5 +13,6 @@
     "*://www.messenger.com/*"
   ],
   "icons": { "48": "icon48.png",
-             "128": "icon128.png" }
+             "128": "icon128.png" },
+  "homepage_url": "https://github.com/guoguo12/messenger-shortcuts"
 }
