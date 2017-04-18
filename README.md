@@ -9,7 +9,7 @@ We now have an official fork for Firefox! Check it out [here](https://github.com
 
 ## List of shortcuts
 ### General
-* Esc &ndash; Move cursor to message input field / cancel search
+* Esc &ndash; Move cursor to message input field (or cancel search)
 * Alt+Shift+C &ndash; Compose new message
 * Alt+Shift+Q &ndash; Search Messenger
 
@@ -19,7 +19,7 @@ We now have an official fork for Firefox! Check it out [here](https://github.com
 
 ### Conversation
 * Alt+Shift+D &ndash; Toggle conversation details
-* Alt+Shift+M &ndash; Mute conversation
+* Alt+Shift+E &ndash; Send a like/emoji (hold to send larger version)
 
 ### Help
 * Alt+Shift+/ &ndash; Display help dialog
