@@ -4,42 +4,56 @@
  * Author: Allen Guo <guoguo12@gmail.com>
  *****************************************/
 
-/** Key bindings **/
-/** Compose, ToggleInfo, Mute, Search, SendLike **/
-var bind = ['C', 'D', 'M', 'Q', 'E'];
 
 /** Constants **/
 
-HELP_HTML = "List of shortcuts:\
-<br><br>\
-<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
-<b>Alt+Shift+"+bind[0]+"</b> &ndash; Compose new message<br>\
-<b>Alt+Shift+"+bind[3]+"</b> &ndash; Search Messenger<br>\
+// Compose, toggle info, search, send like, search
+KEYS = ['C', 'D', 'Q', 'E', '/'];
+
+HELP_TITLE = 'Keyboard Shortcuts for Messenger';
+
+HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
+<b>Alt+Shift+" + KEYS[0] + "</b> &ndash; Compose new message<br>\
+<b>Alt+Shift+" + KEYS[2] + "</b> &ndash; Search Messenger<br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
 <b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
-<b>Alt+Shift+"+bind[1]+"</b> &ndash; Toggle conversation details<br>\
-<b>Alt+Shift+"+bind[2]+"</b> &ndash; Mute conversation<br>\
-<b>Alt+Shift+"+bind[4]+"</b> &ndash; Send a like<br><br>\
-<b>Alt+Shift+/</b> &ndash; Display this help dialog<br>\
+<b>Alt+Shift+" + KEYS[1] + "</b> &ndash; Toggle conversation details<br>\
+<b>Alt+Shift+" + KEYS[3] + "</b> &ndash; Send a like<br><br>\
+<b>Alt+Shift+" + KEYS[4] + "</b> &ndash; Display this help dialog<br>\
 "
 
-/** Menu **/
-var menuOpened = false;
 
-/** Prevent holding down the like button **/
+/** Global variables and listeners **/
+
+// Tracks whether the like button is down
 var likeDown = false;
+
+// Releases the like button
+document.body.addEventListener('keyup', function () {
+  if (likeDown) {
+    var targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+    fireMouseEvent(targetNode, 'mouseup');
+    likeDown = false;
+  }
+}, false);
+
 
 /** Primary event handler **/
 
 document.body.onkeydown = function(event) {
   // Esc key
   if (event.keyCode === 27) {
-    dismiss();
     focusMessageInput();
   }
 
+  // Do nothing if a dialog is open or if the like button is down
+  if (document.querySelector('div[role="dialog"]') || likeDown) {
+    return;
+  }  
+
+  // Enter key (select first search result)
   if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
-    // we're going to change the input, so throw away this keypress
+    // We're going to change the input, so throw away this keypress
     event.preventDefault();
     selectFirstSearchResult();
     return;
@@ -52,10 +66,10 @@ document.body.onkeydown = function(event) {
 
   // Number keys
   if (event.keyCode >= 49 && event.keyCode <= 57) {
-    jumpToMessage(event.keyCode - 49);
+    jumpToNthMessage(event.keyCode - 49);
   }
 
-  // Other keys
+  // Actions
   switch (event.keyCode) {
     case getCode(0):
       compose();
@@ -64,37 +78,17 @@ document.body.onkeydown = function(event) {
       toggleInfo();
       break;
     case getCode(2):
-      mute();
-      break;
-    case getCode(3):
       focusSearchBar();
       break;
-    case getCode(4):
-      if (likeDown) {
-        return;
-      }
-      likeDown = true;
+    case getCode(3):
       sendLike();
       break;
-    case 191: // Fwd. slash
-      if (menuOpened) {
-        return;
-      } else {
-        openHelp();
-      } 
-      menuOpened = !menuOpened;
+    case getCode(4):
+      openHelp();
       break;
   }
 }
 
-// For like button spamming
-document.body.addEventListener('keyup', function () {
-  likeDown = false;
-  triggerMouseEvent(targetNode, "mouseup");
-}, false);
-
-// Toggle dismiss state of help dialog on click to close
-document.body.addEventListener('click', dismiss, true); 
 
 /** Helper functions **/
 
@@ -107,40 +101,50 @@ function last(arr) {
 }
 
 function getCode(index) {
-  return bind[index].charCodeAt(0);
+  var key = KEYS[index];
+  return key === '/' ? 191 : key.charCodeAt(0);
 }
 
-function dismiss() {
-  if (menuOpened) {
-    menuOpened = false;
+// Modified from http://stackoverflow.com/a/2706236
+function fireMouseEvent(targetNode, event) {
+  if (targetNode.fireEvent) {
+    targetNode.fireEvent('on' + event);
+  } else {
+    var eventObject = document.createEvent('MouseEvents');
+    eventObject.initEvent(event, true, false);  // Yes bubble, no cancel
+    targetNode.dispatchEvent(eventObject);
   }
 }
 
-/** Functionality **/
+// A user reported that their built-in click() function doesn't work...
+function click(targetNode) {
+  fireMouseEvent(targetNode, 'click');
+}
 
-function jumpToMessage(index) {
-  document.querySelectorAll('div[aria-label="Conversations"] a')[index].click();
+
+/** Page actions **/
+
+function focusMessageInput() {
+  click(getByAttr('div', 'role', 'combobox'));
 }
 
 function selectFirstSearchResult() {
-  var first = document.querySelector('span[role="search"] a');
+  var first = document.querySelector('ul[role="listbox"] li div');
   if (first) {
-    first.click();
-    // focus message input afterwards in case the user already has that chat open
-    focusMessageInput();
+    click(first);
   }
 }
 
+function jumpToNthMessage(index) {
+  document.querySelectorAll('div[aria-label="Conversations"] a')[index].click();
+}
+
 function compose() {
-  getByAttr('a', 'aria-label', 'New Message').click();
+  click(getByAttr('a', 'aria-label', 'New Message'));
 }
 
 function toggleInfo() {
-  getByAttr('a', 'title', 'Conversation Information').click();
-}
-
-function mute() {
-  getByAttr('input', 'type', 'checkbox').click();
+  click(getByAttr('a', 'aria-label', 'Conversation Information'));
 }
 
 function getSearchBar() {
@@ -151,34 +155,36 @@ function focusSearchBar() {
   getSearchBar().focus();
 }
 
-function focusMessageInput() {
-  targetNode = getByAttr('div', 'aria-label', 'Type a message...')
-  triggerMouseEvent(targetNode, "mouseover");
-  triggerMouseEvent(targetNode, "mousedown");
-  triggerMouseEvent(targetNode, "mouseup");
-  triggerMouseEvent(targetNode, "click");
+function sendLike() {
+  var targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+  fireMouseEvent(targetNode, 'mouseover');
+  fireMouseEvent(targetNode, 'mousedown');  // Released by keyup listener
+
+  likeDown = true;
 }
 
-function openDeleteDialog() {
-  last(document.querySelectorAll('div.contentAfter div[aria-label="Conversation actions"]')).click();
-  document.querySelector('a[role="menuitem"] span span').click();
+function openSettings() {
+  // Briefly open cog button so that settings menu item exists in the HTML
+  var cogButton = getByAttr('a', 'role', 'button');
+  click(cogButton);
+  click(cogButton);
+
+  click(getByAttr('a', 'role', 'menuitem'));
 }
 
 function openHelp() {
-  mute();
-  document.querySelector('div[role="dialog"] h2').innerHTML = "Keyboard Shortcuts for Messenger";
-  document.querySelector('div[role="dialog"] h2~div').innerHTML = HELP_HTML;
-  document.querySelector('div[role="dialog"] h2~div~div').remove();
-}
+  // Open the settings dialog, which we're hijacking
+  openSettings();
 
-function sendLike() {
-  targetNode = getByAttr('a', 'aria-label', 'Send a Like');
-  triggerMouseEvent(targetNode, "mouseover");
-  triggerMouseEvent(targetNode, "mousedown");
-}
+  document.querySelector('div[role="dialog"] em').innerHTML = HELP_TITLE;
 
-function triggerMouseEvent(node, eventType) {
-  var clickEvent = document.createEvent('MouseEvents');
-  clickEvent.initEvent(eventType, true, true);
-  node.dispatchEvent(clickEvent);
+  var textDiv = document.querySelector('div[role="dialog"] h2~div');
+  textDiv.innerHTML = HELP_TEXT;
+  textDiv.style.lineHeight = '130%';
+  textDiv.style.padding = '20px';
+
+  var extraDivs = document.querySelectorAll('div[role="dialog"] h2~div~div');
+  for (var i = 0; i < extraDivs.length; i++) {
+    extraDivs[i].remove();
+  }
 }
