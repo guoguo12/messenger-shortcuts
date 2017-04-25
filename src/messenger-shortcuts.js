@@ -130,12 +130,8 @@ function focusMessageInput() {
 
 function selectFirstSearchResult() {
   var listboxes = document.querySelectorAll('ul[role="listbox"]');
-  // Checking if only a single character has been pressed
-  var contacts = listboxes[(getSearchBar().value.length() <= 1) ? 0 : 1];
-    contacts = document.querySelector('ul[role="listbox"]');
-  } else {
-    contacts = document.querySelectorAll('ul[role="listbox"]')[1];
-  }
+  // Checking if only <= single character has been pressed
+  var contacts = listboxes[(getSearchBar().value.length <= 1) ? 0 : 1];
   var first = contacts.querySelector('ul[role="listbox"] li div');
   if (first) {
     click(first);
