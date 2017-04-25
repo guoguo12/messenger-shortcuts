@@ -129,7 +129,13 @@ function focusMessageInput() {
 }
 
 function selectFirstSearchResult() {
-  var contacts = document.querySelectorAll('ul[role="listbox"]')[1];
+  var listboxes = document.querySelectorAll('ul[role="listbox"]');
+  // Checking if only a single character has been pressed
+  var contacts = listboxes[(getSearchBar().value.length() <= 1) ? 0 : 1];
+    contacts = document.querySelector('ul[role="listbox"]');
+  } else {
+    contacts = document.querySelectorAll('ul[role="listbox"]')[1];
+  }
   var first = contacts.querySelector('ul[role="listbox"] li div');
   if (first) {
     click(first);
@@ -149,8 +155,7 @@ function toggleInfo() {
 }
 
 function getSearchBar() {
-  return document.querySelector('input[type="text"][placeholder="Search Messenger"]');
-  // return getByAttr('input', 'type', 'text');
+  return getByAttr('input', 'type', 'text');
 }
 
 function focusSearchBar() {
