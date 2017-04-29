@@ -2,13 +2,10 @@
 
 This Chrome extension/Firefox add-on adds keyboard shortcuts to the [Messenger web app](http://messenger.com).
 
-# Chrome Installation
-To install, head over to the [Chrome Web Store](https://chrome.google.com/webstore/detail/keyboard-shortcuts-for-me/elgfaolomlhhmppjdicpgpmglkllebfb?hl=en-US&gl=US).
-Alternatively, you can clone this repo and load the `src/` directory as an [unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked).
+## Installation
+To install, head over to the [Chrome Web Store](https://chrome.google.com/webstore/detail/keyboard-shortcuts-for-me/elgfaolomlhhmppjdicpgpmglkllebfb?hl=en-US&gl=US) or [Firefox Extension Store](https://addons.mozilla.org/en-US/firefox/addon/keyboardshortcutsformessenger/).
 
-# Firefox Installation
-To install, head over to the [Firefox Extension Store](https://addons.mozilla.org/en-US/firefox/addon/keyboardshortcutsformessenger/).
-Alternatively, you can clone this repo and load the `src/` directory as a [temporary add-on](https://developer.mozilla.org/en-US/docs/Tools/about%3Adebugging#Enabling_add-on_debugging).
+Alternatively, you can clone this repo and load the `src/` directory as an [unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked) or [temporary add-on](https://developer.mozilla.org/en-US/docs/Tools/about%3Adebugging#Enabling_add-on_debugging).
 
 ## List of shortcuts
 ### General
