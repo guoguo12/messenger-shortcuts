@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
@@ -18,30 +17,7 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="icon.svg">
   <defs
-     id="defs4">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient6423">
-      <stop
-         id="stop6427"
-         offset="0"
-         style="stop-color:#e4e4e4;stop-opacity:1" />
-      <stop
-         id="stop6425"
-         offset="1"
-         style="stop-color:#f7f7f7;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient6423"
-       id="linearGradient6433-7"
-       x1="124.88904"
-       y1="295.40662"
-       x2="267.88904"
-       y2="295.40662"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(6.61133,-114.54405)" />
-  </defs>
+     id="defs4" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -50,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="91.78336"
-     inkscape:cy="895.34019"
+     inkscape:cx="280.59287"
+     inkscape:cy="785.68603"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -180,15 +156,6 @@
          y="211.36148"
          id="tspan5813"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial" /></text>
-    <rect
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="rect6315"
-       width="0.70710677"
-       height="13.435029"
-       x="26.162951"
-       y="14.32945"
-       rx="10"
-       ry="10" />
     <g
        id="g5738-7-6"
        transform="translate(190.5,220.88221)"
@@ -281,64 +248,44 @@
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     </g>
     <g
-       id="g6534"
-       transform="translate(105.5,160.5)"
-       inkscape:export-filename="C:\Users\guogu_000\g6534.png"
-       inkscape:export-xdpi="89.820396"
-       inkscape:export-ydpi="89.820396">
+       id="g4324"
+       transform="translate(275,18)"
+       inkscape:export-xdpi="90.019997"
+       inkscape:export-ydpi="90.019997">
       <g
-         id="g6735"
-         transform="matrix(3.076923,0,0,3.076923,-348.27475,-527.20941)">
-        <path
-           inkscape:connector-curvature="0"
-           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:url(#linearGradient6433-7);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-           d="m 241.13867,135.3622 -109.63867,0 0,91 143,0 0,-61.65234 -33.36133,-29.34766 z"
-           id="path6497-1" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:13px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="138.51143"
-           y="154.49995"
-           id="text6377-3"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             id="tspan6379-3"
-             x="138.51143"
-             y="154.49995"
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.25px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Keyboard</tspan><tspan
-             sodipodi:role="line"
-             x="138.51143"
-             y="174.81245"
-             id="tspan6381-9"
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.25px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Shortcuts</tspan><tspan
-             sodipodi:role="line"
-             x="138.51143"
-             y="195.12495"
-             id="tspan6383-4"
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.25px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">for</tspan><tspan
-             sodipodi:role="line"
-             x="138.51143"
-             y="215.43745"
-             id="tspan6385-7"
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.25px;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Messenger</tspan></text>
+         transform="translate(-326,0)"
+         id="g4236">
         <g
-           id="g6569-6"
-           transform="matrix(0,-0.83883887,-0.83883887,0,484.13108,365.9495)">
-          <path
-             inkscape:connector-curvature="0"
-             id="rect5803-6"
-             d="m 223.76542,249.90625 51.12325,44.97266 0,-44.97266 -51.12325,0 z"
-             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#c30000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-          <path
-             inkscape:connector-curvature="0"
-             id="rect5803-9-8"
-             d="m 237.02833,249.90625 37.86034,33.3054 0,-33.3054 -37.86034,0 z"
-             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-          <path
-             inkscape:connector-curvature="0"
-             id="rect5803-0-7"
-             d="m 251.29601,249.90625 23.59266,20.75425 0,-20.75425 -23.59266,0 z"
-             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#0084ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+           id="g4284">
+          <rect
+             y="48.362213"
+             x="149"
+             height="280"
+             width="440"
+             id="rect4218"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#003362;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:50;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6377-3"
+             y="145.1913"
+             x="206.42232"
+             style="font-style:normal;font-weight:normal;font-size:34.62972641px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:43.28715897px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffffff;fill-opacity:1"
+               y="145.1913"
+               x="206.42232"
+               id="tspan6379-3"
+               sodipodi:role="line">Keyboard</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:43.28715897px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffffff;fill-opacity:1"
+               id="tspan6381-9"
+               y="199.30025"
+               x="206.42232"
+               sodipodi:role="line">Shortcuts</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:43.28715897px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffffff;fill-opacity:1"
+               id="tspan6385-7"
+               y="253.40919"
+               x="206.42232"
+               sodipodi:role="line">for Messenger</tspan></text>
         </g>
       </g>
     </g>
