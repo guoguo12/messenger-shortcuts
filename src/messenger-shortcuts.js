@@ -7,8 +7,8 @@
 
 /** Constants **/
 
-// Compose, toggle info, search, send like, search
-KEYS = ['C', 'D', 'Q', 'E', '/'];
+// Compose, toggle info, search, send like, search in current conversation
+KEYS = ['C', 'D', 'Q', 'E', 'F', '/'];
 
 HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
@@ -19,7 +19,8 @@ HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
 <b>Alt+Shift+" + KEYS[1] + "</b> &ndash; Toggle conversation details<br>\
 <b>Alt+Shift+" + KEYS[3] + "</b> &ndash; Send a like<br><br>\
-<b>Alt+Shift+" + KEYS[4] + "</b> &ndash; Display this help dialog<br>\
+<b>Alt+Shift+" + KEYS[4] + "</b> &ndash; Search in current conversation<br><br>\
+<b>Alt+Shift+" + KEYS[5] + "</b> &ndash; Display this help dialog<br>\
 "
 
 
@@ -84,6 +85,9 @@ document.body.onkeydown = function(event) {
       sendLike();
       break;
     case getCode(4):
+      searchInConversation();
+      break;
+    case getCode(5):
       openHelp();
       break;
   }
@@ -164,6 +168,11 @@ function sendLike() {
   fireMouseEvent(targetNode, 'mousedown');  // Released by keyup listener
 
   likeDown = true;
+}
+
+function searchInConversation() {
+  var targetNode = getByAttr('em', 'data-intl-translation', 'Search in Conversation');
+  click(targetNode);
 }
 
 function openSettings() {
