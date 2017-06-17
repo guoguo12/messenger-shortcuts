@@ -188,7 +188,7 @@ function openHelp() {
   // Open the settings dialog, which we're hijacking
   openSettings();
 
-  var titleDiv = document.querySelector('div[role="dialog"] em');
+  var titleDiv = document.querySelector('div[role="dialog"] h2 div');
   titleDiv.innerHTML = HELP_TITLE;
 
   var textDiv = document.querySelector('div[role="dialog"] h2~div');
