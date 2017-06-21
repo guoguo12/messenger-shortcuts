@@ -34,8 +34,9 @@ HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 /** Relevant key codes */
 ESC_KEY = 27;
 ENTER_KEY = 13;
-NUMBER_MIN = 49;
-NUMBER_MAX = 57;
+NUMBER_1 = 49;
+NUMBER_9 = 57;
+SLASH_KEY = 191;
 
 /** Global variables and listeners **/
 
@@ -56,7 +57,7 @@ document.body.addEventListener('keyup', function () {
 
 document.body.onkeydown = function(event) {
   // Esc key
-  if (event.keyCode === 27) {
+  if (event.keyCode === ESC_KEY) {
     focusMessageInput();
   }
 
@@ -66,7 +67,7 @@ document.body.onkeydown = function(event) {
   }
 
   // Enter key (select first search result)
-  if (event.keyCode == 13 && document.activeElement === getSearchBar()) {
+  if (event.keyCode == ENTER_KEY && document.activeElement === getSearchBar()) {
     // We're going to change the input, so throw away this keypress
     event.preventDefault();
     selectFirstSearchResult();
@@ -79,28 +80,28 @@ document.body.onkeydown = function(event) {
   }
 
   // Number keys
-  if (event.keyCode >= 49 && event.keyCode <= 57) {
-    jumpToNthMessage(event.keyCode - 49);
+  if (event.keyCode >= NUMBER_1 && event.keyCode <= NUMBER_9) {
+    jumpToNthMessage(event.keyCode - NUMBER_1);
   }
 
   // Actions
   switch (event.keyCode) {
-    case getCode(0):
+    case getCode(KEYS.COMPOSE):
       compose();
       break;
-    case getCode(1):
+    case getCode(KEYS.INFO_PANE):
       toggleInfo();
       break;
-    case getCode(2):
+    case getCode(KEYS.SEARCH):
       focusSearchBar();
       break;
-    case getCode(3):
+    case getCode(KEYS.SEND_LIKE):
       sendLike();
       break;
-    case getCode(4):
+    case getCode(KEYS.SEARCH_IN_CONVO):
       searchInConversation();
       break;
-    case getCode(5):
+    case getCode(KEYS.HELP):
       openHelp();
       break;
   }
@@ -117,10 +118,9 @@ function last(arr) {
   return arr.length === 0 ? undefined : arr[arr.length - 1];
 }
 
-function getCode(index) {
-    // TODO Fix
-  var key = KEYS[index];
-  return key === '/' ? 191 : key.charCodeAt(0);
+function getCode(key) {
+  // var key = KEYS[index];
+  return key === '/' ? SLASH_KEY : key.charCodeAt(0);
 }
 
 // Modified from http://stackoverflow.com/a/2706236
