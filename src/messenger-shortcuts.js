@@ -8,21 +8,34 @@
 /** Constants **/
 
 // Compose, toggle info, search, send like, search in current conversation
-KEYS = ['C', 'D', 'Q', 'E', 'F', '/'];
+KEYS = {
+    COMPOSE: 'C',
+    INFO_PANE: 'D',
+    SEARCH: 'Q',
+    SEND_LIKE: 'E',
+    SEARCH_IN_CONVO: 'F',
+    HELP: '/'
+};
+//KEYS = ['C', 'D', 'Q', 'E', 'F', '/'];
 
 HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
 HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
-<b>Alt+Shift+" + KEYS[0] + "</b> &ndash; Compose new message<br>\
-<b>Alt+Shift+" + KEYS[2] + "</b> &ndash; Search Messenger<br>\
+<b>Alt+Shift+" + KEYS[COMPOSE] + "</b> &ndash; Compose new message<br>\
+<b>Alt+Shift+" + KEYS[SEARCH] + "</b> &ndash; Search Messenger<br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
 <b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
-<b>Alt+Shift+" + KEYS[1] + "</b> &ndash; Toggle conversation details<br>\
-<b>Alt+Shift+" + KEYS[3] + "</b> &ndash; Send a like<br><br>\
-<b>Alt+Shift+" + KEYS[4] + "</b> &ndash; Search in current conversation<br><br>\
-<b>Alt+Shift+" + KEYS[5] + "</b> &ndash; Display this help dialog<br>\
+<b>Alt+Shift+" + KEYS[INFO_PANE] + "</b> &ndash; Toggle conversation details<br>\
+<b>Alt+Shift+" + KEYS[SEND_LIKE] + "</b> &ndash; Send a like<br><br>\
+<b>Alt+Shift+" + KEYS[SEARCH_IN_CONVO] + "</b> &ndash; Search in current conversation<br><br>\
+<b>Alt+Shift+" + KEYS[HELP] + "</b> &ndash; Display this help dialog<br>\
 "
 
+/** Relevant key codes */
+ESC_KEY = 27;
+ENTER_KEY = 13;
+NUMBER_MIN = 49;
+NUMBER_MAX = 57;
 
 /** Global variables and listeners **/
 
@@ -105,6 +118,7 @@ function last(arr) {
 }
 
 function getCode(index) {
+    // TODO Fix
   var key = KEYS[index];
   return key === '/' ? 191 : key.charCodeAt(0);
 }
