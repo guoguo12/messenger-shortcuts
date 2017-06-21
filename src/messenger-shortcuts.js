@@ -223,4 +223,4 @@ function openHelp() {
   for (var i = 0; i < extraDivs.length; i++) {
     extraDivs[i].remove();
   }
-
+}
