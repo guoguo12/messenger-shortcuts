@@ -16,7 +16,6 @@ KEYS = {
     SEARCH_IN_CONVO: 'F',
     HELP: '/'
 };
-//KEYS = ['C', 'D', 'Q', 'E', 'F', '/'];
 
 HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
@@ -31,12 +30,14 @@ HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>\
 "
 
+
 /** Relevant key codes */
 ESC_KEY = 27;
 ENTER_KEY = 13;
 NUMBER_1 = 49;
 NUMBER_9 = 57;
 SLASH_KEY = 191;
+
 
 /** Global variables and listeners **/
 
@@ -75,8 +76,16 @@ document.body.onkeydown = function(event) {
   }
 
   // Only combinations of the form Alt+Shift+<key> are accepted
-  if (!(event.altKey && event.shiftKey)) {
-    return;
+  if (navigator.appVersion.indexOf("Mac")!=-1) {
+    // macOS
+    if (!(event.ctrlKey && event.shiftKey)) {
+      return;
+    }
+  } else {
+    // other OS
+    if (!(event.altKey && event.shiftKey)) {
+      return;
+    }
   }
 
   // Number keys
@@ -118,8 +127,8 @@ function last(arr) {
   return arr.length === 0 ? undefined : arr[arr.length - 1];
 }
 
+// Get the event keyCode value for the given keypress
 function getCode(key) {
-  // var key = KEYS[index];
   return key === '/' ? SLASH_KEY : key.charCodeAt(0);
 }
 
@@ -214,4 +223,4 @@ function openHelp() {
   for (var i = 0; i < extraDivs.length; i++) {
     extraDivs[i].remove();
   }
-}
+
