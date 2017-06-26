@@ -194,8 +194,10 @@ function sendLike() {
 }
 
 function searchInConversation() {
-  var targetNode = getByAttr('em', 'data-intl-translation', 'Search in Conversation');
-  click(targetNode);
+  var targetNode = document.querySelector('._3szn._3szo ._5odt') // return the first one that matches the selector
+  if (targetNode) {
+    click(targetNode);
+  }
 }
 
 function openSettings() {
