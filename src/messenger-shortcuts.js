@@ -172,7 +172,9 @@ function sendLike() {
 
 function searchInConversation() {
   var targetNode = document.querySelector('._3szn._3szo ._5odt') // return the first one that matches the selector
-  click(targetNode);
+  if (targetNode) {
+    click(targetNode);
+  }
 }
 
 function openSettings() {
