@@ -20,14 +20,15 @@ KEYS = {
 HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
 HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
-<b>Alt+Shift+" + KEYS.COMPOSE + "</b> &ndash; Compose new message<br>\
-<b>Alt+Shift+" + KEYS.SEARCH + "</b> &ndash; Search Messenger<br>\
+<b>On macOS, replace Alt with Ctrl:</b>\
+<b>Alt+Shift+" + KEYS[COMPOSE] + "</b> &ndash; Compose new message<br>\
+<b>Alt+Shift+" + KEYS[SEARCH] + "</b> &ndash; Search Messenger<br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
-<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
-<b>Alt+Shift+" + KEYS.INFO_PANE + "</b> &ndash; Toggle conversation details<br>\
-<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like<br><br>\
-<b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>\
-<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>\
+<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below (this is the same for Windows and macOS)<br><br>\
+<b>Alt+Shift+" + KEYS[INFO_PANE] + "</b> &ndash; Toggle conversation details<br>\
+<b>Alt+Shift+" + KEYS[SEND_LIKE] + "</b> &ndash; Send a like<br><br>\
+<b>Alt+Shift+" + KEYS[SEARCH_IN_CONVO] + "</b> &ndash; Search in current conversation<br><br>\
+<b>Alt+Shift+" + KEYS[HELP] + "</b> &ndash; Display this help dialog<br>\
 "
 
 
