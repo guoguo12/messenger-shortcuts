@@ -1,6 +1,6 @@
 {
   "name": "Keyboard Shortcuts for Messenger",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Gmail-like keyboard shortcuts for the Facebook Messenger web app (messenger.com).",
   "manifest_version": 2,
   "content_scripts": [
