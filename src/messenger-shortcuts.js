@@ -7,10 +7,10 @@
 
 /** Constants **/
 
-// Compose, toggle info, search, send like, search in current conversation
 KEYS = {
     COMPOSE: 'C',
     INFO_PANE: 'D',
+    ACTIONS_MENU: 'A',
     SEARCH: 'Q',
     SEND_LIKE: 'E',
     SEARCH_IN_CONVO: 'F',
@@ -25,6 +25,7 @@ HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
 <b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
 <b>Alt+Shift+" + KEYS.INFO_PANE + "</b> &ndash; Toggle conversation details<br>\
+<b>Alt+Shift+" + KEYS.ACTIONS_MENU + "</b> &ndash; Open conversation actions menu<br>\
 <b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like<br><br>\
 <b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>\
 <b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>\
@@ -100,6 +101,9 @@ document.body.onkeydown = function(event) {
       break;
     case getCode(KEYS.INFO_PANE):
       toggleInfo();
+      break;
+    case getCode(KEYS.ACTIONS_MENU):
+      openActions();
       break;
     case getCode(KEYS.SEARCH):
       focusSearchBar();
@@ -202,11 +206,24 @@ function searchInConversation() {
 
 function openSettings() {
   // Briefly open cog button so that settings menu item exists in the HTML
-  var cogButton = getByAttr('a', 'role', 'button');
+  var cogButton = document.querySelector('div[role="banner"] a[role="button"]');
+
   click(cogButton);
   click(cogButton);
 
-  click(getByAttr('a', 'role', 'menuitem'));
+  var settingsButton = document.querySelector('.uiContextualLayerBelowLeft a[role="menuitem"]');
+  click(settingsButton);
+}
+
+function openActions() {
+  // Open info panel if closed so that actions menu is visible
+  var infoPanel = getByAttr('a', 'aria-label', 'Conversation Information');
+  if (infoPanel.getAttribute('aria-expanded') !== "true") {
+    toggleInfo();
+  }
+
+  var cogButton = document.querySelector('div[role="main"] div[aria-label="Conversation actions"]');
+  click(cogButton);
 }
 
 function openHelp() {
