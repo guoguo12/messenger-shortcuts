@@ -17,6 +17,12 @@ KEYS = {
     HELP: '/'
 };
 
+ESC_KEY = 27;
+ENTER_KEY = 13;
+NUMBER_1 = 49;
+NUMBER_9 = 57;
+SLASH_KEY = 191;
+
 HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
 HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
@@ -30,14 +36,6 @@ HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
 <b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>\
 <b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>\
 "
-
-
-/** Relevant key codes */
-ESC_KEY = 27;
-ENTER_KEY = 13;
-NUMBER_1 = 49;
-NUMBER_9 = 57;
-SLASH_KEY = 191;
 
 
 /** Global variables and listeners **/
