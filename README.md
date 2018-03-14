@@ -20,6 +20,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 
 #### Conversation
 * Alt+Shift+D &ndash; Toggle conversation details
+* Alt+Shift+A &ndash; Open conversation actions menu
 * Alt+Shift+E &ndash; Send a like/emoji (hold to send larger version)
 
 #### Help
@@ -39,6 +40,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 
 #### Conversation
 * Ctrl+Shift+D &ndash; Toggle conversation details
+* Ctrl+Shift+A &ndash; Open conversation actions menu
 * Ctrl+Shift+E &ndash; Send a like/emoji (hold to send larger version)
 
 #### Help
