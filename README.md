@@ -22,6 +22,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 * Alt+Shift+D &ndash; Toggle conversation details
 * Alt+Shift+A &ndash; Open conversation actions menu
 * Alt+Shift+E &ndash; Send a like/emoji (hold to send larger version)
+* Alt+Shift+F &ndash; Search in current conversation
 
 #### Help
 * Alt+Shift+/ &ndash; Display help dialog
@@ -42,6 +43,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 * Ctrl+Shift+D &ndash; Toggle conversation details
 * Ctrl+Shift+A &ndash; Open conversation actions menu
 * Ctrl+Shift+E &ndash; Send a like/emoji (hold to send larger version)
+* Ctrl+Shift+F &ndash; Search in current conversation
 
 #### Help
 * Ctrl+Shift+/ &ndash; Display help dialog
