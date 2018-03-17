@@ -8,47 +8,31 @@ To install, head over to the [Chrome Web Store](https://chrome.google.com/websto
 Alternatively, you can clone this repo and load the `src/` directory as an [unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked) or [temporary add-on](https://developer.mozilla.org/en-US/docs/Tools/about%3Adebugging#Enabling_add-on_debugging).
 
 ## List of shortcuts
-### Windows
-#### General
-* Esc &ndash; Move cursor to message input field (or cancel search)
-* Alt+Shift+C &ndash; Compose new message
-* Alt+Shift+Q &ndash; Search Messenger
 
-#### Jumping
-* Alt+Shift+<i>n</i> &ndash; Jump to conversation <i>n</i>-th from top
-* Alt+Up/Down &ndash; Jump to conversation one above/below*
+Note:
 
-#### Conversation
-* Alt+Shift+D &ndash; Toggle conversation details
-* Alt+Shift+A &ndash; Open conversation actions menu
-* Alt+Shift+E &ndash; Send a like/emoji (hold to send larger version)
-* Alt+Shift+F &ndash; Search in current conversation
+* `Alt+Up/Down` is already mapped to jump to a conversation one above/below
+* On macOS, replace `Alt` with `Ctrl`
 
-#### Help
-* Alt+Shift+/ &ndash; Display help dialog
+### General
+* `Esc` &ndash; Move cursor to message input field (or cancel search)
+* `Alt+Shift+C` &ndash; Compose new message
+* `Alt+Shift+Q` &ndash; Search Messenger
 
-*This one works even without the extension.
+### Jumping
+* `Alt+Shift+<i>n</i>` &ndash; Jump to conversation <i>n</i>-th from top
 
-### macOS
-#### General
-* Esc &ndash; Move cursor to message input field (or cancel search)
-* Ctrl+Shift+C &ndash; Compose new message
-* Ctrl+Shift+Q &ndash; Search Messenger
+### Conversation
+* `Alt+Shift+D` &ndash; Toggle conversation details
+* `Alt+Shift+A` &ndash; Open conversation actions menu
+* `Alt+Shift+E` &ndash; Send a like/emoji (hold to send larger version)
+* `Alt+Shift+F` &ndash; Search in current conversation
 
-#### Jumping
-* Ctrl+Shift+<i>n</i> &ndash; Jump to conversation <i>n</i>-th from top
-* Alt+Up/Down &ndash; Jump to conversation one above/below*
-
-#### Conversation
-* Ctrl+Shift+D &ndash; Toggle conversation details
-* Ctrl+Shift+A &ndash; Open conversation actions menu
-* Ctrl+Shift+E &ndash; Send a like/emoji (hold to send larger version)
-* Ctrl+Shift+F &ndash; Search in current conversation
-
-#### Help
-* Ctrl+Shift+/ &ndash; Display help dialog
+### Help
+* `Alt+Shift+/` &ndash; Display help dialog
 
 *This one works even without the extension.
+
 ## License
 
 [GNU GPL v2.0](https://www.gnu.org/licenses/gpl-2.0.txt).
