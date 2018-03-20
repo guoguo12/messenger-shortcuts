@@ -18,6 +18,7 @@ On macOS, replace `Alt` with `Ctrl`.
 
 ### Jumping
 * `Alt+Shift+n` &ndash; Jump to conversation <i>n</i>-th from top
+  * On macOS, this uses `Alt` not `Ctrl`.
 * `Alt+Up/Down` &ndash; Jump to conversation one above/below*
 
 ### Conversation
