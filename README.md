@@ -9,10 +9,7 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 
 ## List of shortcuts
 
-Note:
-
-* `Alt+Up/Down` is already mapped to jump to a conversation one above/below
-* On macOS, replace `Alt` with `Ctrl`
+On macOS, replace `Alt` with `Ctrl`.
 
 ### General
 * `Esc` &ndash; Move cursor to message input field (or cancel search)
@@ -21,6 +18,7 @@ Note:
 
 ### Jumping
 * `Alt+Shift+n` &ndash; Jump to conversation <i>n</i>-th from top
+* `Alt+Up/Down` &ndash; Jump to conversation one above/below*
 
 ### Conversation
 * `Alt+Shift+D` &ndash; Toggle conversation details
@@ -30,6 +28,8 @@ Note:
 
 ### Help
 * `Alt+Shift+/` &ndash; Display help dialog
+
+*This one works even without the extension.
 
 ## License
 
