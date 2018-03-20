@@ -20,7 +20,7 @@ Note:
 * `Alt+Shift+Q` &ndash; Search Messenger
 
 ### Jumping
-* `Alt+Shift+<i>n</i>` &ndash; Jump to conversation <i>n</i>-th from top
+* `Alt+Shift+n` &ndash; Jump to conversation <i>n</i>-th from top
 
 ### Conversation
 * `Alt+Shift+D` &ndash; Toggle conversation details
@@ -30,8 +30,6 @@ Note:
 
 ### Help
 * `Alt+Shift+/` &ndash; Display help dialog
-
-*This one works even without the extension.
 
 ## License
 
