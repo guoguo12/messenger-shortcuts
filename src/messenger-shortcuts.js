@@ -235,6 +235,7 @@ function openHelp() {
   textDiv.innerHTML = HELP_TEXT;
   textDiv.style.lineHeight = '130%';
   textDiv.style.padding = '20px';
+  textDiv.style.display = 'block';
 
   var extraDivs = document.querySelectorAll('div[role="dialog"] h2~div~div');
   for (var i = 0; i < extraDivs.length; i++) {
