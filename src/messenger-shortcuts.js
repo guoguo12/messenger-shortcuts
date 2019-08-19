@@ -125,6 +125,12 @@ function getByAttr(tag, attr, value) {
   return document.querySelector(tag + '[' + attr + '="' + value + '"]');
 }
 
+function getByText(tag, text) {
+  query = '//' + tag + '[text()="' + text + '"]';
+  results = document.evaluate(query, document, null, XPathResult.ANY_TYPE, null);
+  return results.iterateNext();
+}
+
 function last(arr) {
   return arr.length === 0 ? undefined : arr[arr.length - 1];
 }
@@ -196,7 +202,7 @@ function sendLike() {
 }
 
 function searchInConversation() {
-  var targetNode = document.querySelector('._3szn._3szo ._5odt');
+  var targetNode = getByText('div', 'Search in Conversation').parentNode
   if (targetNode) {
     click(targetNode);
   }
