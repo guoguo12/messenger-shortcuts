@@ -25,17 +25,16 @@ SLASH_KEY = 191;
 
 HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
-HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>\
-<b>Alt+Shift+" + KEYS.COMPOSE + "</b> &ndash; Compose new message<br>\
-<b>Alt+Shift+" + KEYS.SEARCH + "</b> &ndash; Search Messenger<br>\
-<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>\
-<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>\
-<b>Alt+Shift+" + KEYS.INFO_PANE + "</b> &ndash; Toggle conversation details<br>\
-<b>Alt+Shift+" + KEYS.ACTIONS_MENU + "</b> &ndash; Open conversation actions menu<br>\
-<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like<br><br>\
-<b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>\
-<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>\
-"
+HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>" +
+"<b>Alt+Shift+" + KEYS.COMPOSE + "</b> &ndash; Compose new message<br>" +
+"<b>Alt+Shift+" + KEYS.SEARCH + "</b> &ndash; Search Messenger<br>" +
+"<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>" +
+"<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>" +
+"<b>Alt+Shift+" + KEYS.INFO_PANE + "</b> &ndash; Toggle conversation details<br>" +
+"<b>Alt+Shift+" + KEYS.ACTIONS_MENU + "</b> &ndash; Open conversation actions menu<br>" +
+"<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like<br><br>" +
+"<b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>" +
+"<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>";
 
 
 /** Global variables and listeners **/
@@ -116,7 +115,7 @@ document.body.onkeydown = function(event) {
       openHelp();
       break;
   }
-}
+};
 
 
 /** Helper functions **/
@@ -126,8 +125,8 @@ function getByAttr(tag, attr, value) {
 }
 
 function getByText(tag, text) {
-  query = '//' + tag + '[text()="' + text + '"]';
-  results = document.evaluate(query, document, null, XPathResult.ANY_TYPE, null);
+  var query = '//' + tag + '[text()="' + text + '"]';
+  var results = document.evaluate(query, document, null, XPathResult.ANY_TYPE, null);
   return results.iterateNext();
 }
 
@@ -202,7 +201,7 @@ function sendLike() {
 }
 
 function searchInConversation() {
-  var targetNode = getByText('div', 'Search in Conversation').parentNode
+  var targetNode = getByText('div', 'Search in Conversation').parentNode;
   if (targetNode) {
     click(targetNode);
   }
