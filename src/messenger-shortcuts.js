@@ -210,7 +210,7 @@ function searchInConversation() {
 
 function openSettings() {
   // Briefly open cog button so that settings menu item exists in the HTML
-  var cogButton = document.querySelector('div[role="banner"] a[role="button"]');
+  var cogButton = getByAttr('a', 'aria-haspopup', 'true');
 
   click(cogButton);
   click(cogButton);
