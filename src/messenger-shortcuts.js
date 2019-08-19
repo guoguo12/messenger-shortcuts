@@ -214,14 +214,9 @@ function openSettings() {
 }
 
 function openActions() {
-  // Open info panel if closed so that actions menu is visible
-  var infoPanel = getByAttr('a', 'aria-label', 'Conversation Information');
-  if (infoPanel.getAttribute('aria-expanded') !== "true") {
-    toggleInfo();
-  }
-
-  var cogButton = document.querySelector('div[role="main"] div[aria-label="Conversation actions"]');
-  click(cogButton);
+  // The "additions text" part gets the selected/active conversation
+  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="Conversation actions"]');
+  click(menuButton);
 }
 
 function openHelp() {
