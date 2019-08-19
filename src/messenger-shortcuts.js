@@ -7,7 +7,7 @@
 
 /** Constants **/
 
-KEYS = {
+var KEYS = {
     COMPOSE: 'C',
     INFO_PANE: 'D',
     ACTIONS_MENU: 'A',
@@ -17,15 +17,16 @@ KEYS = {
     HELP: '/'
 };
 
-ESC_KEY = 27;
-ENTER_KEY = 13;
-NUMBER_1 = 49;
-NUMBER_9 = 57;
-SLASH_KEY = 191;
+var ESC_KEY = 27;
+var ENTER_KEY = 13;
+var NUMBER_1 = 49;
+var NUMBER_9 = 57;
+var SLASH_KEY = 191;
 
-HELP_TITLE = 'Keyboard Shortcuts for Messenger';
+var HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
-HELP_TEXT = "<b>Esc</b> &ndash; Move cursor to message input field<br><br>" +
+var HELP_TEXT =
+"<b>Esc</b> &ndash; Move cursor to message input field<br><br>" +
 "<b>Alt+Shift+" + KEYS.COMPOSE + "</b> &ndash; Compose new message<br>" +
 "<b>Alt+Shift+" + KEYS.SEARCH + "</b> &ndash; Search Messenger<br>" +
 "<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>" +
@@ -128,10 +129,6 @@ function getByText(tag, text) {
   var query = '//' + tag + '[text()="' + text + '"]';
   var results = document.evaluate(query, document, null, XPathResult.ANY_TYPE, null);
   return results.iterateNext();
-}
-
-function last(arr) {
-  return arr.length === 0 ? undefined : arr[arr.length - 1];
 }
 
 // Get the event keyCode value for the given keypress
