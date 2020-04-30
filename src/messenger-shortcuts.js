@@ -204,15 +204,25 @@ function searchInConversation() {
   }
 }
 
-function openSettings() {
+var settingsHasBeenOpenedBefore = false;
+
+function openSettingsThen(f) {
   // Briefly open cog button so that settings menu item exists in the HTML
   var cogButton = getByAttr('a', 'aria-haspopup', 'true');
-
   click(cogButton);
   click(cogButton);
 
   var settingsButton = document.querySelector('.uiContextualLayerBelowLeft a[role="menuitem"]');
   click(settingsButton);
+
+  if (settingsHasBeenOpenedBefore) {
+    f();
+  } else {
+    // The dialog doesn't appear right away the first time
+    setTimeout(f, 300);
+  }
+
+  settingsHasBeenOpenedBefore = true;
 }
 
 function openActions() {
@@ -223,19 +233,19 @@ function openActions() {
 
 function openHelp() {
   // Open the settings dialog, which we're hijacking
-  openSettings();
+  openSettingsThen(function () {
+    var titleDiv = document.querySelector('div[role="dialog"] h2 div');
+    titleDiv.innerHTML = HELP_TITLE;
 
-  var titleDiv = document.querySelector('div[role="dialog"] h2 div');
-  titleDiv.innerHTML = HELP_TITLE;
+    var textDiv = document.querySelector('div[role="dialog"] h2~div');
+    textDiv.innerHTML = HELP_TEXT;
+    textDiv.style.lineHeight = '130%';
+    textDiv.style.padding = '20px';
+    textDiv.style.display = 'block';
 
-  var textDiv = document.querySelector('div[role="dialog"] h2~div');
-  textDiv.innerHTML = HELP_TEXT;
-  textDiv.style.lineHeight = '130%';
-  textDiv.style.padding = '20px';
-  textDiv.style.display = 'block';
-
-  var extraDivs = document.querySelectorAll('div[role="dialog"] h2~div~div');
-  for (var i = 0; i < extraDivs.length; i++) {
-    extraDivs[i].remove();
-  }
+    var extraDivs = document.querySelectorAll('div[role="dialog"] h2~div~div');
+    for (var i = 0; i < extraDivs.length; i++) {
+      extraDivs[i].remove();
+    }
+  });
 }
