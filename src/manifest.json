@@ -14,5 +14,8 @@
   ],
   "icons": { "48": "icon48.png",
              "128": "icon128.png" },
-  "homepage_url": "https://github.com/guoguo12/messenger-shortcuts"
+  "homepage_url": "https://github.com/guoguo12/messenger-shortcuts",
+  "web_accessible_resources": [
+    "lang/*.json"
+  ]
 }
