@@ -21,7 +21,6 @@ var ESC_KEY = 27;
 var ENTER_KEY = 13;
 var NUMBER_1 = 49;
 var NUMBER_9 = 57;
-var SLASH_KEY = 191;
 
 var HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
@@ -61,7 +60,6 @@ window.addEventListener('load', function () {
   if(lang !== undefined && lang !== null) {
 
     const url = chrome.runtime.getURL('lang/' + lang + '.json');
-    console.log(url);
 
     fetch(url)
         .then((response) => {
@@ -141,7 +139,8 @@ document.body.onkeydown = function(event) {
     case getCode(KEYS.SEARCH_IN_CONVO):
       searchInConversation();
       break;
-    case getCode(KEYS.HELP):
+    case 111: // divide (on num keyboard)
+    case 191: // forward slash (on std. eng keyboard)
       openHelp();
       break;
   }
@@ -162,7 +161,7 @@ function getByText(tag, text) {
 
 // Get the event keyCode value for the given keypress
 function getCode(key) {
-  return key === '/' ? SLASH_KEY : key.charCodeAt(0);
+  return key.charCodeAt(0);
 }
 
 // Modified from http://stackoverflow.com/a/2706236
