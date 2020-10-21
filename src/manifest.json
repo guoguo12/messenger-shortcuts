@@ -10,7 +10,8 @@
     }
   ],
   "permissions": [
-    "*://www.messenger.com/*"
+    "*://www.messenger.com/*",
+    "*://www.facebook.com/messages/*"
   ],
   "icons": { "48": "icon48.png",
              "128": "icon128.png" },
