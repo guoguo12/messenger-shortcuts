@@ -38,6 +38,16 @@ var HELP_TEXT =
 "<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>";
 
 
+let searchByTexts = {
+  search_conversation: "Search in Conversation",
+  send_a_like: "Send a Like",
+  new_message: "New Message",
+  conversation_information: "Conversation Information",
+  conversations: "Conversations",
+  conversation_actions: "Conversation actions"
+};
+
+
 /** Global variables and listeners **/
 
 // Tracks whether the like button is down
@@ -170,15 +180,15 @@ function selectFirstSearchResult() {
 }
 
 function jumpToNthMessage(index) {
-  document.querySelectorAll('div[aria-label="Conversations"] a')[index].click();
+  document.querySelectorAll('div[aria-label="' + searchByTexts.conversations + '"] a')[index].click();
 }
 
 function compose() {
-  click(getByAttr('a', 'aria-label', 'New Message'));
+  click(getByAttr('a', 'aria-label', searchByTexts.new_message));
 }
 
 function toggleInfo() {
-  click(getByAttr('a', 'aria-label', 'Conversation Information'));
+  click(getByAttr('a', 'aria-label', searchByTexts.conversation_information));
 }
 
 function getSearchBar() {
@@ -190,7 +200,7 @@ function focusSearchBar() {
 }
 
 function sendLike() {
-  var targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+  var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
   fireMouseEvent(targetNode, 'mouseover');
   fireMouseEvent(targetNode, 'mousedown');  // Released by keyup listener
 
@@ -198,7 +208,7 @@ function sendLike() {
 }
 
 function searchInConversation() {
-  var targetNode = getByText('div', 'Search in Conversation').parentNode;
+  var targetNode = getByText('div', searchByTexts.search_conversation).parentNode;
   if (targetNode) {
     click(targetNode);
   }
@@ -227,7 +237,7 @@ function openSettingsThen(f) {
 
 function openActions() {
   // The "additions text" part gets the selected/active conversation
-  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="Conversation actions"]');
+  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="' + searchByTexts.conversation_actions + '"]');
   click(menuButton);
 }
 
