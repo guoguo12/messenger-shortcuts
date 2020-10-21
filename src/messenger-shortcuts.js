@@ -53,10 +53,29 @@ let searchByTexts = {
 // Tracks whether the like button is down
 var likeDown = false;
 
+/**
+ * Load the language of the messenger window
+ */
+window.addEventListener('load', function () {
+  let lang = document.documentElement.lang
+  if(lang !== undefined && lang !== null) {
+
+    const url = chrome.runtime.getURL('lang/' + lang + '.json');
+    console.log(url);
+
+    fetch(url)
+        .then((response) => {
+          if(response.status === 200) {
+            response.json().then((json) => searchByTexts = json)
+          }
+        })
+  }
+});
+
 // Releases the like button
 document.body.addEventListener('keyup', function () {
   if (likeDown) {
-    var targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+    var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
     fireMouseEvent(targetNode, 'mouseup');
     likeDown = false;
   }
