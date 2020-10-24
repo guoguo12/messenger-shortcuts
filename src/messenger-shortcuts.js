@@ -67,6 +67,7 @@ window.addEventListener('load', function () {
             response.json().then((json) => searchByTexts = json)
           }
         })
+        .catch(_ => _)
   }
 });
 
