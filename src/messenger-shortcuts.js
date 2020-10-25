@@ -21,7 +21,6 @@ var ESC_KEY = 27;
 var ENTER_KEY = 13;
 var NUMBER_1 = 49;
 var NUMBER_9 = 57;
-var SLASH_KEY = 191;
 
 var HELP_TITLE = 'Keyboard Shortcuts for Messenger';
 
@@ -38,15 +37,44 @@ var HELP_TEXT =
 "<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>";
 
 
+let searchByTexts = {
+  search_conversation: "Search in Conversation",
+  send_a_like: "Send a Like",
+  new_message: "New Message",
+  conversation_information: "Conversation Information",
+  conversations: "Conversations",
+  conversation_actions: "Conversation actions"
+};
+
+
 /** Global variables and listeners **/
 
 // Tracks whether the like button is down
 var likeDown = false;
 
+/**
+ * Load the language of the messenger window
+ */
+window.addEventListener('load', function () {
+  let lang = document.documentElement.lang
+  if(lang !== undefined && lang !== null) {
+
+    const url = chrome.runtime.getURL('lang/' + lang + '.json');
+
+    fetch(url)
+        .then((response) => {
+          if(response.status === 200) {
+            response.json().then((json) => searchByTexts = json)
+          }
+        })
+        .catch(_ => _)
+  }
+});
+
 // Releases the like button
 document.body.addEventListener('keyup', function () {
   if (likeDown) {
-    var targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+    var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
     fireMouseEvent(targetNode, 'mouseup');
     likeDown = false;
   }
@@ -112,7 +140,8 @@ document.body.onkeydown = function(event) {
     case getCode(KEYS.SEARCH_IN_CONVO):
       searchInConversation();
       break;
-    case getCode(KEYS.HELP):
+    case 111: // divide (on num keyboard)
+    case 191: // forward slash (on std. eng keyboard)
       openHelp();
       break;
   }
@@ -133,7 +162,7 @@ function getByText(tag, text) {
 
 // Get the event keyCode value for the given keypress
 function getCode(key) {
-  return key === '/' ? SLASH_KEY : key.charCodeAt(0);
+  return key.charCodeAt(0);
 }
 
 // Modified from http://stackoverflow.com/a/2706236
@@ -170,15 +199,15 @@ function selectFirstSearchResult() {
 }
 
 function jumpToNthMessage(index) {
-  document.querySelectorAll('div[aria-label="Conversations"] a')[index].click();
+  document.querySelectorAll('div[aria-label="' + searchByTexts.conversations + '"] a')[index].click();
 }
 
 function compose() {
-  click(getByAttr('a', 'aria-label', 'New Message'));
+  click(getByAttr('a', 'aria-label', searchByTexts.new_message));
 }
 
 function toggleInfo() {
-  click(getByAttr('a', 'aria-label', 'Conversation Information'));
+  click(getByAttr('a', 'aria-label', searchByTexts.conversation_information));
 }
 
 function getSearchBar() {
@@ -190,7 +219,7 @@ function focusSearchBar() {
 }
 
 function sendLike() {
-  var targetNode = getByAttr('a', 'aria-label', 'Send a Like');
+  var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
   fireMouseEvent(targetNode, 'mouseover');
   fireMouseEvent(targetNode, 'mousedown');  // Released by keyup listener
 
@@ -198,7 +227,7 @@ function sendLike() {
 }
 
 function searchInConversation() {
-  var targetNode = getByText('div', 'Search in Conversation').parentNode;
+  var targetNode = getByText('div', searchByTexts.search_conversation).parentNode;
   if (targetNode) {
     click(targetNode);
   }
@@ -227,7 +256,7 @@ function openSettingsThen(f) {
 
 function openActions() {
   // The "additions text" part gets the selected/active conversation
-  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="Conversation actions"]');
+  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="' + searchByTexts.conversation_actions + '"]');
   click(menuButton);
 }
 
