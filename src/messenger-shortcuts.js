@@ -185,7 +185,7 @@ function click(targetNode) {
 /** Page actions **/
 
 function focusMessageInput() {
-  click(getByAttr('div', 'role', 'combobox'));
+  click(getByAttr('div', 'role', 'textbox'));
 }
 
 function selectFirstSearchResult() {
@@ -199,7 +199,7 @@ function selectFirstSearchResult() {
 }
 
 function jumpToNthMessage(index) {
-  document.querySelectorAll('div[aria-label="' + searchByTexts.conversations + '"] a')[index].click();
+  document.querySelectorAll('div[data-testid="mwthreadlist-item"] a')[index].click();
 }
 
 function compose() {
@@ -207,11 +207,11 @@ function compose() {
 }
 
 function toggleInfo() {
-  click(getByAttr('a', 'aria-label', searchByTexts.conversation_information));
+  click(getByAttr('div', 'aria-label', searchByTexts.conversation_information));
 }
 
 function getSearchBar() {
-  return getByAttr('input', 'type', 'text');
+  return getByAttr('input', 'type', 'search');
 }
 
 function focusSearchBar() {
