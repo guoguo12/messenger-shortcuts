@@ -46,8 +46,11 @@ let searchByTexts = {
  * Load the language of the messenger window
  */
 window.addEventListener('load', function () {
-  let lang = document.documentElement.lang
-  if(lang !== undefined && lang !== null) {
+  let lang = document.documentElement.lang;
+  if (lang !== undefined && lang !== null) {
+    if (lang == '') {
+      lang = getLanguageCodeFromMetaTags('og:locale');
+    }
 
     const url = chrome.runtime.getURL('lang/' + lang + '.json');
 
@@ -60,6 +63,17 @@ window.addEventListener('load', function () {
         .catch(_ => _)
   }
 });
+
+
+function getLanguageCodeFromMetaTags(propertyValue) {
+  var metaTags = window.document.documentElement.getElementsByTagName('meta');
+  for (const tag of metaTags) {
+    if (tag.getAttribute('property') == propertyValue) {
+      return tag.content.substring(0, 2);
+    }
+  }
+  return '';
+}
 
 /** Primary event handler **/
 
