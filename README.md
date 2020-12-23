@@ -9,8 +9,6 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 
 ## List of shortcuts
 
-**As of December 20, 2020, some shortcuts are broken due to a recent UI update. See [#27](https://github.com/guoguo12/messenger-shortcuts/issues/27).**
-
 On macOS, replace `Alt` with `Ctrl`.
 
 ### General
