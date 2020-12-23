@@ -10,10 +10,8 @@
 var KEYS = {
     COMPOSE: 'C',
     INFO_PANE: 'D',
-    ACTIONS_MENU: 'A',
     SEARCH: 'Q',
     SEND_LIKE: 'E',
-    SEARCH_IN_CONVO: 'F',
     HELP: '/'
 };
 
@@ -29,28 +27,20 @@ var HELP_TEXT =
 "<b>Alt+Shift+" + KEYS.COMPOSE + "</b> &ndash; Compose new message<br>" +
 "<b>Alt+Shift+" + KEYS.SEARCH + "</b> &ndash; Search Messenger<br>" +
 "<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>" +
-"<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>" +
 "<b>Alt+Shift+" + KEYS.INFO_PANE + "</b> &ndash; Toggle conversation details<br>" +
-"<b>Alt+Shift+" + KEYS.ACTIONS_MENU + "</b> &ndash; Open conversation actions menu<br>" +
-"<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like<br><br>" +
-"<b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>" +
+"<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like/emoji<br><br>" +
 "<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>";
 
 
+// TODO: Fix duplication between here and src/lang/en.json.
 let searchByTexts = {
-  search_conversation: "Search in Conversation",
-  send_a_like: "Send a Like",
+  send_a_like: "Send a ",
   new_message: "New Message",
-  conversation_information: "Conversation Information",
-  conversations: "Conversations",
-  conversation_actions: "Conversation actions"
+  conversation_information: "Conversation Information"
 };
 
 
 /** Global variables and listeners **/
-
-// Tracks whether the like button is down
-var likeDown = false;
 
 /**
  * Load the language of the messenger window
@@ -74,6 +64,7 @@ window.addEventListener('load', function () {
   }
 });
 
+
 function getLanguageCodeFromMetaTags(propertyValue) {
   var metaTags = window.document.documentElement.getElementsByTagName('meta');
   for (const tag of metaTags) {
@@ -92,17 +83,20 @@ document.body.addEventListener('keyup', function () {
   }
 }, false);
 
-
 /** Primary event handler **/
 
 document.body.onkeydown = function(event) {
   // Esc key
   if (event.keyCode === ESC_KEY) {
+    var dialogCloseButton = document.querySelector('div[role="dialog"] div~div div');
+    if (dialogCloseButton) {
+      dialogCloseButton.click();
+    }
     focusMessageInput();
   }
 
-  // Do nothing if a dialog is open or if the like button is down
-  if (document.querySelector('div[role="dialog"]') || likeDown) {
+  // Do nothing if a dialog is open
+  if (document.querySelector('div[role="dialog"]')) {
     return;
   }
 
@@ -140,17 +134,11 @@ document.body.onkeydown = function(event) {
     case getCode(KEYS.INFO_PANE):
       toggleInfo();
       break;
-    case getCode(KEYS.ACTIONS_MENU):
-      openActions();
-      break;
     case getCode(KEYS.SEARCH):
       focusSearchBar();
       break;
     case getCode(KEYS.SEND_LIKE):
       sendLike();
-      break;
-    case getCode(KEYS.SEARCH_IN_CONVO):
-      searchInConversation();
       break;
     case 111: // divide (on num keyboard)
     case 191: // forward slash (on std. eng keyboard)
@@ -200,6 +188,7 @@ function focusMessageInput() {
   click(getByAttr('div', 'role', 'textbox'));
 }
 
+// TODO: This is broken as of 2020-12-23.
 function selectFirstSearchResult() {
   var listboxes = document.querySelectorAll('ul[role="listbox"]');
   // Checking if only <= single character has been pressed
@@ -231,62 +220,32 @@ function focusSearchBar() {
 }
 
 function sendLike() {
-  var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
-  fireMouseEvent(targetNode, 'mouseover');
-  fireMouseEvent(targetNode, 'mousedown');  // Released by keyup listener
-
-  likeDown = true;
+  click(document.querySelector('div[role="button"][aria-label*="' + searchByTexts.send_a_like + '"]'));
 }
 
-function searchInConversation() {
-  var targetNode = getByText('div', searchByTexts.search_conversation).parentNode;
-  if (targetNode) {
-    click(targetNode);
-  }
-}
+function openPreferencesThen(f) {
+  var actionsButton = getByAttr('div', 'role', 'button');
+  click(actionsButton);
+  click(actionsButton); // For some reason this makes it open faster...
 
-var settingsHasBeenOpenedBefore = false;
+  var preferencesButton = document.querySelector('div[role="menuitem"] div[data-visualcompletion="ignore"]');
+  click(preferencesButton);
 
-function openSettingsThen(f) {
-  // Briefly open cog button so that settings menu item exists in the HTML
-  var cogButton = getByAttr('a', 'aria-haspopup', 'true');
-  click(cogButton);
-  click(cogButton);
-
-  var settingsButton = document.querySelector('.uiContextualLayerBelowLeft a[role="menuitem"]');
-  click(settingsButton);
-
-  if (settingsHasBeenOpenedBefore) {
-    f();
-  } else {
-    // The dialog doesn't appear right away the first time
-    setTimeout(f, 300);
-  }
-
-  settingsHasBeenOpenedBefore = true;
-}
-
-function openActions() {
-  // The "additions text" part gets the selected/active conversation
-  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="' + searchByTexts.conversation_actions + '"]');
-  click(menuButton);
+  var interval = setInterval(function() {
+    if (document.querySelector('div[role="dialog"] h2')) {
+      clearInterval(interval);
+      f();
+    }
+  }, 25);
 }
 
 function openHelp() {
-  // Open the settings dialog, which we're hijacking
-  openSettingsThen(function () {
-    var titleDiv = document.querySelector('div[role="dialog"] h2 div');
+  // Open the preferences dialog, which we're hijacking
+  openPreferencesThen(function () {
+    var titleDiv = document.querySelector('div[role="dialog"] h2 span');
     titleDiv.innerHTML = HELP_TITLE;
 
-    var textDiv = document.querySelector('div[role="dialog"] h2~div');
-    textDiv.innerHTML = HELP_TEXT;
-    textDiv.style.lineHeight = '130%';
-    textDiv.style.padding = '20px';
-    textDiv.style.display = 'block';
-
-    var extraDivs = document.querySelectorAll('div[role="dialog"] h2~div~div');
-    for (var i = 0; i < extraDivs.length; i++) {
-      extraDivs[i].remove();
-    }
+    var textDiv = document.querySelector('div[role="dialog"] div div div~div~div');
+    textDiv.innerHTML = '<div style="font-size: 150%; margin: 5%">' + HELP_TEXT + '</div>';
   });
 }

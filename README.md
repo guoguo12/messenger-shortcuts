@@ -9,8 +9,6 @@ Alternatively, you can clone this repo and load the `src/` directory as an [unpa
 
 ## List of shortcuts
 
-**As of December 20, 2020, some shortcuts are broken due to a recent UI update. See [#27](https://github.com/guoguo12/messenger-shortcuts/issues/27).**
-
 On macOS, replace `Alt` with `Ctrl`.
 
 ### General
@@ -21,18 +19,13 @@ On macOS, replace `Alt` with `Ctrl`.
 ### Jumping
 * `Alt+Shift+n` &ndash; Jump to conversation <i>n</i>-th from top
   * On macOS, this uses `Alt` not `Ctrl`.
-* `Alt+Up/Down` &ndash; Jump to conversation one above/below*
 
 ### Conversation
 * `Alt+Shift+D` &ndash; Toggle conversation details
-* `Alt+Shift+A` &ndash; Open conversation actions menu
-* `Alt+Shift+E` &ndash; Send a like/emoji (hold to send larger version)
-* `Alt+Shift+F` &ndash; Search in current conversation
+* `Alt+Shift+E` &ndash; Send a like/emoji
 
 ### Help
 * `Alt+Shift+/` &ndash; Display help dialog
-
-*This one works even without the extension.
 
 ## License
 

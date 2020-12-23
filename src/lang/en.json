@@ -1,8 +1,5 @@
 {
-    "search_conversation": "Search in Conversation",
-    "send_a_like": "Send a Like",
+    "send_a_like": "Send a ",
     "new_message": "New Message",
-    "conversation_information": "Conversation Information",
-    "conversations": "Conversations",
-    "conversation_actions": "Conversation actions"
+    "conversation_information": "Conversation Information"
 }
