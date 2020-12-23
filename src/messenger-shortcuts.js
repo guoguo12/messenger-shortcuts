@@ -37,9 +37,10 @@ var HELP_TEXT =
 "<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>";
 
 
+// TODO: Fix duplication between here and src/lang/en.json.
 let searchByTexts = {
   search_conversation: "Search in Conversation",
-  send_a_like: "Send a Like",
+  send_a_like: "Send a ",
   new_message: "New Message",
   conversation_information: "Conversation Information",
   conversations: "Conversations",
@@ -48,9 +49,6 @@ let searchByTexts = {
 
 
 /** Global variables and listeners **/
-
-// Tracks whether the like button is down
-var likeDown = false;
 
 /**
  * Load the language of the messenger window
@@ -71,16 +69,6 @@ window.addEventListener('load', function () {
   }
 });
 
-// Releases the like button
-document.body.addEventListener('keyup', function () {
-  if (likeDown) {
-    var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
-    fireMouseEvent(targetNode, 'mouseup');
-    likeDown = false;
-  }
-}, false);
-
-
 /** Primary event handler **/
 
 document.body.onkeydown = function(event) {
@@ -89,8 +77,8 @@ document.body.onkeydown = function(event) {
     focusMessageInput();
   }
 
-  // Do nothing if a dialog is open or if the like button is down
-  if (document.querySelector('div[role="dialog"]') || likeDown) {
+  // Do nothing if a dialog is open
+  if (document.querySelector('div[role="dialog"]')) {
     return;
   }
 
@@ -219,11 +207,7 @@ function focusSearchBar() {
 }
 
 function sendLike() {
-  var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
-  fireMouseEvent(targetNode, 'mouseover');
-  fireMouseEvent(targetNode, 'mousedown');  // Released by keyup listener
-
-  likeDown = true;
+  click(document.querySelector('div[role="button"][aria-label*="' + searchByTexts.send_a_like + '"]'));
 }
 
 function searchInConversation() {

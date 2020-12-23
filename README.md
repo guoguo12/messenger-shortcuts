@@ -26,7 +26,7 @@ On macOS, replace `Alt` with `Ctrl`.
 ### Conversation
 * `Alt+Shift+D` &ndash; Toggle conversation details
 * `Alt+Shift+A` &ndash; Open conversation actions menu
-* `Alt+Shift+E` &ndash; Send a like/emoji (hold to send larger version)
+* `Alt+Shift+E` &ndash; Send a like/emoji
 * `Alt+Shift+F` &ndash; Search in current conversation
 
 ### Help
