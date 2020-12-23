@@ -74,14 +74,6 @@ function getLanguageCodeFromMetaTags(propertyValue) {
   }
   return '';
 }
-// Releases the like button
-document.body.addEventListener('keyup', function () {
-  if (likeDown) {
-    var targetNode = getByAttr('a', 'aria-label', searchByTexts.send_a_like);
-    fireMouseEvent(targetNode, 'mouseup');
-    likeDown = false;
-  }
-}, false);
 
 /** Primary event handler **/
 
