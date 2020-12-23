@@ -10,10 +10,8 @@
 var KEYS = {
     COMPOSE: 'C',
     INFO_PANE: 'D',
-    ACTIONS_MENU: 'A',
     SEARCH: 'Q',
     SEND_LIKE: 'E',
-    SEARCH_IN_CONVO: 'F',
     HELP: '/'
 };
 
@@ -29,22 +27,16 @@ var HELP_TEXT =
 "<b>Alt+Shift+" + KEYS.COMPOSE + "</b> &ndash; Compose new message<br>" +
 "<b>Alt+Shift+" + KEYS.SEARCH + "</b> &ndash; Search Messenger<br>" +
 "<b>Alt+Shift+<i>n</i></b> &ndash; Jump to conversation <i>n</i>-th from top<br>" +
-"<b>Alt+Up</b>/<b>Down</b> &ndash; Jump to conversation one above/below<br><br>" +
 "<b>Alt+Shift+" + KEYS.INFO_PANE + "</b> &ndash; Toggle conversation details<br>" +
-"<b>Alt+Shift+" + KEYS.ACTIONS_MENU + "</b> &ndash; Open conversation actions menu<br>" +
-"<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like<br><br>" +
-"<b>Alt+Shift+" + KEYS.SEARCH_IN_CONVO + "</b> &ndash; Search in current conversation<br><br>" +
+"<b>Alt+Shift+" + KEYS.SEND_LIKE + "</b> &ndash; Send a like/emoji<br><br>" +
 "<b>Alt+Shift+" + KEYS.HELP + "</b> &ndash; Display this help dialog<br>";
 
 
 // TODO: Fix duplication between here and src/lang/en.json.
 let searchByTexts = {
-  search_conversation: "Search in Conversation",
   send_a_like: "Send a ",
   new_message: "New Message",
-  conversation_information: "Conversation Information",
-  conversations: "Conversations",
-  conversation_actions: "Conversation actions"
+  conversation_information: "Conversation Information"
 };
 
 
@@ -116,17 +108,11 @@ document.body.onkeydown = function(event) {
     case getCode(KEYS.INFO_PANE):
       toggleInfo();
       break;
-    case getCode(KEYS.ACTIONS_MENU):
-      openActions();
-      break;
     case getCode(KEYS.SEARCH):
       focusSearchBar();
       break;
     case getCode(KEYS.SEND_LIKE):
       sendLike();
-      break;
-    case getCode(KEYS.SEARCH_IN_CONVO):
-      searchInConversation();
       break;
     case 111: // divide (on num keyboard)
     case 191: // forward slash (on std. eng keyboard)
@@ -176,6 +162,7 @@ function focusMessageInput() {
   click(getByAttr('div', 'role', 'textbox'));
 }
 
+// TODO: This is broken as of 2020-12-23.
 function selectFirstSearchResult() {
   var listboxes = document.querySelectorAll('ul[role="listbox"]');
   // Checking if only <= single character has been pressed
@@ -210,13 +197,6 @@ function sendLike() {
   click(document.querySelector('div[role="button"][aria-label*="' + searchByTexts.send_a_like + '"]'));
 }
 
-function searchInConversation() {
-  var targetNode = getByText('div', searchByTexts.search_conversation).parentNode;
-  if (targetNode) {
-    click(targetNode);
-  }
-}
-
 function openPreferencesThen(f) {
   var actionsButton = getByAttr('div', 'role', 'button');
   click(actionsButton);
@@ -231,12 +211,6 @@ function openPreferencesThen(f) {
       f();
     }
   }, 25);
-}
-
-function openActions() {
-  // The "additions text" part gets the selected/active conversation
-  var menuButton = document.querySelector('li[aria-relevant="additions text"] div[aria-label="' + searchByTexts.conversation_actions + '"]');
-  click(menuButton);
 }
 
 function openHelp() {

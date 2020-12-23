@@ -21,18 +21,13 @@ On macOS, replace `Alt` with `Ctrl`.
 ### Jumping
 * `Alt+Shift+n` &ndash; Jump to conversation <i>n</i>-th from top
   * On macOS, this uses `Alt` not `Ctrl`.
-* `Alt+Up/Down` &ndash; Jump to conversation one above/below*
 
 ### Conversation
 * `Alt+Shift+D` &ndash; Toggle conversation details
-* `Alt+Shift+A` &ndash; Open conversation actions menu
 * `Alt+Shift+E` &ndash; Send a like/emoji
-* `Alt+Shift+F` &ndash; Search in current conversation
 
 ### Help
 * `Alt+Shift+/` &ndash; Display help dialog
-
-*This one works even without the extension.
 
 ## License
 
