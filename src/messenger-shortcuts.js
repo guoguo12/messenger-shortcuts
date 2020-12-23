@@ -66,6 +66,10 @@ window.addEventListener('load', function () {
 document.body.onkeydown = function(event) {
   // Esc key
   if (event.keyCode === ESC_KEY) {
+    var dialogCloseButton = document.querySelector('div[role="dialog"] div~div div');
+    if (dialogCloseButton) {
+      dialogCloseButton.click();
+    }
     focusMessageInput();
   }
 
