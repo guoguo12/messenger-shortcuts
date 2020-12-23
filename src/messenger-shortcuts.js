@@ -217,13 +217,13 @@ function searchInConversation() {
   }
 }
 
-function openSettingsThen(f) {
+function openPreferencesThen(f) {
   var actionsButton = getByAttr('div', 'role', 'button');
   click(actionsButton);
   click(actionsButton); // For some reason this makes it open faster...
 
-  var settingsButton = document.querySelector('div[role="menuitem"] div[data-visualcompletion="ignore"]');
-  click(settingsButton);
+  var preferencesButton = document.querySelector('div[role="menuitem"] div[data-visualcompletion="ignore"]');
+  click(preferencesButton);
 
   var interval = setInterval(function() {
     if (document.querySelector('div[role="dialog"] h2')) {
@@ -240,8 +240,8 @@ function openActions() {
 }
 
 function openHelp() {
-  // Open the settings dialog, which we're hijacking
-  openSettingsThen(function () {
+  // Open the preferences dialog, which we're hijacking
+  openPreferencesThen(function () {
     var titleDiv = document.querySelector('div[role="dialog"] h2 span');
     titleDiv.innerHTML = HELP_TITLE;
 
