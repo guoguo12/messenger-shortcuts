@@ -178,7 +178,7 @@ function selectFirstSearchResult() {
 }
 
 function jumpToNthMessage(index) {
-  document.querySelectorAll('div[data-testid="mwthreadlist-item"] a')[index].click();
+  document.querySelectorAll('div[role=row] a[role=link]')[index].click();
 }
 
 function compose() {
