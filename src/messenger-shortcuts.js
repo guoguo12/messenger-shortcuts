@@ -35,8 +35,8 @@ var HELP_TEXT =
 // TODO: Fix duplication between here and src/lang/en.json.
 let searchByTexts = {
   send_a_like: "Send a ",
-  new_message: "New Message",
-  conversation_information: "Conversation Information"
+  new_message: "New message",
+  conversation_information: "Conversation information"
 };
 
 
